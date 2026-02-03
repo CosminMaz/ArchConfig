@@ -3,7 +3,7 @@
 
 echo "Installing..."
 sudo pacman -Syu
-sudo pacman -S --needed vivaldi git alacritty make git ripgrep fd unzip neovim gcc cmake discord libreoffice-fresh xournalpp vscode
+sudo pacman -S --needed vivaldi git alacritty make git ripgrep fd unzip neovim gcc cmake discord libreoffice-fresh xournalpp vscode tmux
 echo "Updating..."
 sudo pacman -Syu
 
@@ -16,11 +16,7 @@ alacritty_path="$HOME/.config/alacritty/themes"
 if [ ! -d "$alacritty_path" ]; then
 	mkdir -p "$alacritty_path"
 	git clone https://github.com/alacritty/alacritty-theme "$alacritty_path"
-	touch ~/.config/alacritty/alacritty.toml
-	echo '[general]
-import = [
-	"~/.config/alacritty/themes/themes/ayu_mirage.toml"
-]' > "$HOME/.config/alacritty/alacritty.toml"
+	mv ./alacritty/alacritty.toml ~/.config/alacritty/
 else 
 	echo "Alacritty dir already exists. Skipping..."
 fi
